@@ -1,0 +1,29 @@
+<div class="wrap wrap-mountain mt-12">
+    <div class="container">
+
+        <div id="contenidoDinamico">
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    config.init();
+    ajax_dyd.data = {
+        start: "0",
+        limit: 1,
+        sort: "id_contenido",
+        dir: 'ASC',
+        id_contenido: mainPerfil.id_contenido
+    };
+
+    ajax_dyd.type = 'POST';
+    ajax_dyd.url = 'pxp/lib/rest/contenidos/Contenido/listarContenido';
+    ajax_dyd.dataType = 'json';
+    ajax_dyd.async = true;
+    ajax_dyd.peticion_ajax(function (resp) {
+
+        $("#contenidoDinamico").html(resp.datos[0].contenido);
+    });
+</script>

@@ -1,0 +1,84 @@
+
+<div id="owl-example" class="owl-carousel">
+
+</div>
+
+<script>
+
+    var $sliderTemplate = $('<div class="owl-slide">\n    <div class="owl--text">\n        aca va el texto</div>\n</div>')
+    config.init();
+
+
+    ajax_dyd.type = 'POST';
+    ajax_dyd.url = 'pxp/lib/rest/contenidos/Contenido/listarContenidoParaWeb';
+    ajax_dyd.dataType = 'json';
+    ajax_dyd.async = true;
+    ajax_dyd.peticion_ajax(function (resp) {
+
+
+        var myJSON = JSON.parse(resp.datos[0].json);
+
+
+        console.log(myJSON)
+        myJSON.forEach(function (contenido,indexContenido) {
+
+            //get the slider type
+            var slider = contenido.tipo_archivo.find(function (tipo_archivo) {
+                return tipo_archivo.nombre == 'SLIDER';
+            });
+            //get the file
+            var archivo = contenido.tipo_archivo.find(function (tipo_archivo) {
+                return tipo_archivo.nombre == 'ARCHIVO';
+            });
+
+            //slider slider imagen
+            var titulo = slider.archivo.valores.find(function (s) {
+                return s.nombre == 'TITULO';
+            });
+            var resumen = slider.archivo.valores.find(function (s) {
+                return s.nombre == 'Resumen';
+            });
+
+
+            var $slider = $sliderTemplate.clone();
+            /*draw to img*/
+            $slider.css('background-image', 'url(' + 'http://'+config.DOMINIO.url+'/uploaded_files/sis_parametros/Archivo/' +slider.archivo.nombre_archivo + '.' + slider.archivo.extension + ''  + ')');
+
+            $slider.find('.owl--text').html('<h4>'+titulo.valor+'</h4> '+resumen.valor+' ');
+
+
+
+
+
+
+
+
+
+            /*if (archivo.archivo == undefined || archivo.archivo == null){
+                $slider.find('button').remove();
+            }else {
+                $slider.find('button').click(function () {
+
+                    open('http://'+config.DOMINIO.url+'/uploaded_files/sis_parametros/Archivo/' +archivo.archivo.nombre_archivo + '.' + archivo.archivo.extension + '')
+                });
+            }*/
+
+
+
+            $("#owl-example").append($slider);
+
+        });
+
+        $("#owl-example").owlCarousel({
+            navigation : true,
+            slideSpeed : 300,
+            paginationSpeed : 400,
+            singleItem: true,
+            pagination: false,
+            rewindSpeed: 500
+        });
+
+    });
+
+
+</script>

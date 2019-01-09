@@ -1,0 +1,106 @@
+<div class="container container-full">
+    <div class="ms-paper">
+        <div class="row">
+            <div class="col-md-3 ms-paper-menu-left-container">
+                <div class="ms-paper-menu-left">
+                    <h3 class="ms-paper-menu-title">
+                        <!--<i class="zmdi zmdi-apps"></i> -->
+                        <span class="categoriaTitulo"></span>
+                        <a role="button" data-toggle="collapse" href="#collapseMenu" aria-expanded="false" aria-controls="collapseMenu" class="withripple">
+                            <!--<i class="zmdi zmdi-menu"></i>-->
+                        </a>
+                    </h3>
+                    <div class="panel-menu collapse" id="collapseMenu">
+                        <ul class="panel-group ms-collapse-nav" id="components-nav" role="tablist" aria-multiselectable="true">
+
+
+                            <li class="card" role="tab" id="e6">
+                                <a role="button" data-toggle="collapse" href="#c6" aria-expanded="true" aria-controls="c6" class="withripple">
+                                    <i class="zmdi zmdi-tab"></i> Contenidos<div class="ripple-container"></div></a>
+                                <ul id="contenidosTab" id="c6" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="e6" data-parent="#components-nav" style="">
+                                    <!--<li>-->
+                                        <!--<a class="withripple" href="component-collapses.html">-->
+                                            <!--<i class="zmdi zmdi-view-day"></i> Collapses</a>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                        <!--<a class="withripple active" href="component-horizontal-tabs.html">-->
+                                            <!--<i class="zmdi zmdi-tab"></i> Horitzontal Tabs</a>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                        <!--<a class="withripple" href="component-vertical-tabs.html">-->
+                                            <!--<i class="zmdi zmdi-menu"></i> Vertical Tabs</a>-->
+                                    <!--</li>-->
+                                </ul>
+                            </li>
+
+                        </ul>
+                        <!-- ms-collapse-nav -->
+                    </div>
+                </div>
+            </div>
+            <!-- col-md-3 -->
+            <div class="col-md-9 ms-paper-content-container">
+                <div class="ms-paper-content">
+                    <h1 class="categoriaTitulo"></h1>
+                    <section id="mostrarContenido" class="ms-component-section">
+                        <!--<h2 class="section-title no-margin-top">Basic tabs</h2>-->
+
+                    </section>
+                </div>
+                <!-- ms-paper-content -->
+            </div>
+            <!-- col-md-9 -->
+        </div>
+        <!-- row -->
+    </div>
+    <!-- ms-paper -->
+</div>
+
+<script>
+
+    var $contenidosTabTemplate = $('<li>\n    <a class="withripple">\n        content</a>\n</li>');
+    var $mostrarContenido = $("#mostrarContenido");
+    var $contenidosTabContenedor = $("#contenidosTab");
+    config.init();
+    ajax_dyd.data = {
+        start: "0",
+        limit: 100,
+        sort: "id_contenido",
+        dir: 'ASC',
+        id_categoria: mainPerfil.id_contenido
+    };
+
+    ajax_dyd.type = 'POST';
+    ajax_dyd.url = 'pxp/lib/rest/contenidos/Contenido/listarContenido';
+    ajax_dyd.dataType = 'json';
+    ajax_dyd.async = true;
+    ajax_dyd.peticion_ajax(function (resp) {
+
+        $(".categoriaTitulo").html(resp.datos[0].desc_categoria);
+        $.each(resp.datos,function (k,v) {
+            var $contenidoTab = $contenidosTabTemplate.clone();
+            $contenidoTab.find('.withripple').html(v.nombre);
+            $contenidoTab.find('.withripple').attr('data-id',v.id_contenido);
+
+            $contenidosTabContenedor.append($contenidoTab);
+
+
+            $contenidoTab.find('.withripple').click(function () {
+
+                $contenidosTabContenedor.find('.withripple').removeClass('active');
+                $(this).addClass('active');
+
+                $mostrarContenido.html(v.contenido);
+                $mostrarContenido.html(v.contenido);
+                $mostrarContenido.html(v.contenido);
+                $mostrarContenido.parent().find('.categoriaTitulo').html(v.nombre);
+                $mostrarContenido.find('img').css({"width":"100%"});
+
+            });
+
+        });
+
+
+
+    });
+</script>
