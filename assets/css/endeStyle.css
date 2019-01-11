@@ -1565,7 +1565,8 @@ legend {
 .navbar .navbar-nav>li>a {
     color: inherit;
     padding-top: 20px;
-    padding-bottom: 20px
+    padding-bottom: 20px;
+    cursor: pointer;
 }
 
 .navbar .navbar-nav>li>a:hover,.navbar .navbar-nav>li>a:focus {
@@ -2365,7 +2366,7 @@ hr.on-light {
 
 * {
     -webkit-tap-highlight-color: rgba(255,255,255,0);
-    -webkit-tap-highlight-color: transparent
+    -webkit-tap-highlight-color: white;
 }
 
 *:focus {
@@ -5472,7 +5473,7 @@ hr.double {
     font-family: Material-Design-Iconic-Font;
     content: "\f2fb";
     float: right;
-    vertical-align: middle
+    vertical-align: middle;
 }
 
 .ms-navbar .navbar-collapse .navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-submenu .dropdown-menu,.ms-lead-navbar .navbar-collapse .navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-submenu .dropdown-menu {
@@ -7683,7 +7684,8 @@ hr.double {
 .dropdown-toggle {
     border-radius: 0;
     padding-left: 8px;
-    padding-right: 8px
+    padding-right: 8px;
+    cursor: pointer;
 }
 
 .table-striped-primary>tbody>tr:nth-child(odd)>td,.table-striped-primary>tbody>tr:nth-child(odd)>th {
@@ -8208,6 +8210,7 @@ pre.line-numbers>code {
 .panel .panel-body {
     padding: 20px;
     padding: 2rem
+    /*background-color: white;*/
 }
 
 .panel .panel-body>p:last-child {

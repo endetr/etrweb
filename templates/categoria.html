@@ -65,11 +65,11 @@
     ajax_dyd.data = {
         start: "0",
         limit: 100,
-        sort: "id_contenido",
+        sort: "orden",
         dir: 'ASC',
         id_categoria: mainPerfil.id_contenido
     };
-
+console.log(mainPerfil);
     ajax_dyd.type = 'POST';
     ajax_dyd.url = 'pxp/lib/rest/contenidos/Contenido/listarContenido';
     ajax_dyd.dataType = 'json';

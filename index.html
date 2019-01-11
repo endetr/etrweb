@@ -270,7 +270,7 @@
             var myJSON = JSON.parse(resp.datos[0].json);
 
 
-            console.log(myJSON)
+            //console.log(myJSON)
             myJSON.forEach(function (contenido, indexContenido) {
 
                 //get the slider type
@@ -302,8 +302,8 @@
 
 
                 $slider.find('.Agency-PlayBtn').click(function () {
-                    console.log(archivo)
-                    console.log(contenido)
+                    //console.log(archivo)
+                    //console.log(contenido)
                     if(contenido.content != ""){
                         $contentAux = $('<div class="container container-full">'+contenido.content+'</div>');
                         $("#contenedor_principal").empty().append($contentAux);
@@ -428,7 +428,7 @@
 
                 this.obtenerAjax('templates/'+url+'.html',function (resp) {
 
-                    //console.log($('body').find('[data-href="'+url+'"]'))
+                    ////console.log($('body').find('[data-href="'+url+'"]'))
                     $("#contenedor_principal").empty().append(resp);
                 });
                 $(".ms-footer").css({"position":"relative"});
@@ -460,7 +460,7 @@
                 ajax_dyd.async = true;
                 ajax_dyd.peticion_ajax(function (resp) {
 
-                    console.log('lleggga ajajajaj')
+                    //console.log('lleggga ajajajaj')
                     var myJSON = JSON.parse(resp.datos[0].menu_json);
                     var objAux = JSON.parse(resp.datos[0].menu_json);
 
@@ -488,7 +488,7 @@
 
                         if($menuContainer.find('#'+menu.fk_id_gui).length ){
                             var $liExistente = $menuContainer.find('#'+menu.fk_id_gui);
-                            console.log('ya existe el menu')
+                            //console.log('ya existe el menu')
                             if(!$liExistente.find('.dropdown-toggle').length){
                                 var nombre_anterior = $liExistente.find('a').text();
                                 $liExistente.find('a').remove();
@@ -584,8 +584,10 @@
                         var rutaParaNavegador;
                         if($(this).data("href")=="link"){
                             //si es un tipo link entonces este debe redireccionar
-                            window.location.replace($(this).data("link"));
-
+                            if( $(this).data("link")=='index.html' )
+                                window.location.replace($(this).data("link"));
+                            else
+                                window.open($(this).data("link"));
                         }else{
                             rutaParaNavegador=$(this).data("href");
                             if($(this).data("href") === 'contenido' || $(this).data("href") === 'categoria'){
@@ -666,7 +668,7 @@
 
             convertirFigureSvg : function () {
 
-                console.log('llega')
+                //console.log('llega')
 
                 jQuery('figure.svg').each(function () {
 
@@ -721,7 +723,7 @@
     /*router*/
     (function ($) {
        router = new kendo.Router();
-        console.log('router',router)
+        //console.log('router',router)
 
         //crearemos el router apartir del tipo de contenido pla = plantlla , cat= categoria y contenido = contenido
 
@@ -754,7 +756,7 @@
 
         $(function () {
             router.start();
-            console.log('router2', router);
+            //console.log('router2', router);
 
             if (window.location == 'http://localhost:63342/endeFinal/ende/index.html' || window.location == 'http://localhost:63342/endeFinal/ende/' || window.location == 'http://demo.disydes.com/' || window.location == 'http://www.demo.disydes.com/' || window.location == 'http://disydes.com/' || window.location == 'http://www.disydes.com/') {
                 router.navigate("/home");
