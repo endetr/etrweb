@@ -285,7 +285,9 @@
 
                 var $slider = $(replaceAll(templateSliderString,'2971',indexContenido));
 
-                $slider.find('img').attr('src','http://'+config.DOMINIO.url+'/uploaded_files/sis_parametros/Archivo/' +slider.archivo.nombre_archivo + '.' + slider.archivo.extension + ''  );
+
+
+                $slider.find('img').attr('src','http://'+config.ruta_servicio+'/uploaded_files/sis_parametros/Archivo/' +slider.archivo.nombre_archivo + '.' + slider.archivo.extension + ''  );
                 $slider.find('.Agency-SubTitle').text(resumen.valor);
                 $slider.find('.Agency-Title').text(titulo.valor);
 
@@ -302,8 +304,8 @@
                     }
 
                     if(archivo.archivo != null || archivo.archivo != ""){
-                        window.open('http://'+config.DOMINIO.url+'/uploaded_files/sis_parametros/Archivo/' +archivo.archivo.nombre_archivo + '.' + archivo.archivo.extension + '', "_blank");
-                    }
+                        window.open('http://'+config.ruta_servicio+'/uploaded_files/sis_parametros/Archivo/' +archivo.archivo.nombre_archivo + '.' + archivo.archivo.extension + '', "_blank");
+                    }0
                 });
 
                 if(contenido.content != "" && archivo.archivo != null){
