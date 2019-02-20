@@ -22,7 +22,7 @@
         //root cda47bf12c43a24d1b2af7014c012357
         //admin 21232f297a57a5a743894a0e4a801fc3
 
-        IP : {ip:"192.168.193.131",carpeta:"kerp"},
+        IP : {ip:"172.18.78.225",carpeta:"kerp"},
         DOMINIO : {url:""},
         ruta_servicio : '',
 
