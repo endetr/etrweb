@@ -62,6 +62,7 @@
     var $mostrarContenido = $("#mostrarContenido");
     var $contenidosTabContenedor = $("#contenidosTab");
     config.init();
+    console.log('mainPerfil.id_contenido',mainPerfil.id_contenido)
     ajax_dyd.data = {
         start: "0",
         limit: 100,
@@ -69,7 +70,6 @@
         dir: 'ASC',
         id_categoria: mainPerfil.id_contenido
     };
-console.log(mainPerfil);
     ajax_dyd.type = 'POST';
     ajax_dyd.url = 'pxp/lib/rest/contenidos/Contenido/listarContenido';
     ajax_dyd.dataType = 'json';
