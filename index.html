@@ -609,8 +609,8 @@
         //crearemos el router apartir del tipo de contenido pla = plantlla , cat= categoria y contenido = contenido
         router.route("/:interface(/:id)", function (interface, id) {
             var tipoDeContenido;
-            if(interface === 'contendio'){
-                tipoDeContenido = 'contendio';
+            if(interface === 'contenido'){
+                tipoDeContenido = 'contenido';
             }else if (interface === 'categoria'){
                 tipoDeContenido = 'categoria';
             }else{
